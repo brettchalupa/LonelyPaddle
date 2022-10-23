@@ -84,7 +84,6 @@ class GameState extends FlxState
 		var centerWall = new FlxSprite();
 		centerWall.makeGraphic(WALL_THICKNESS, WALL_THICKNESS * 4, Color.BLUE);
 		centerWall.screenCenter();
-		centerWall.x += WALL_THICKNESS;
 		walls.add(centerWall);
 
 		for (wall in walls)
