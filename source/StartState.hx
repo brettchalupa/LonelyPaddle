@@ -29,13 +29,6 @@ class StartState extends FlxState
 		add(startText);
 
 		starSound = FlxG.sound.load("assets/sounds/star.ogg");
-
-		// TODO:
-		// - logo
-		// - credit
-		// - "chin up kid, pass some time with Lonely Paddle"
-		// - controls
-		// - settings???
 	}
 
 	override public function update(elapsed:Float) {

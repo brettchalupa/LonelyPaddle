@@ -1,0 +1,31 @@
+# TODO
+
+- [ ] dx
+    - [ ] get haxe language server working
+    - [ ] get offline docs downloaded for HaxeFlixel for easy access
+    - [ ] set up itch.io butler for quick uploads and releases
+- [ ] start screen
+    - [x] initial ver
+    - [ ] high score
+    - [ ] logo
+    - [ ] credit
+    - [ ] character saying "chin up kid, pass some time with Lonely Paddle"
+    - [ ] controls
+- [ ] game over
+    - [ ] render character again encouraging
+- [ ] art
+    - [ ] change buddy color
+    - [ ] make a sprite for the center wall
+- [ ] music
+    - [ ] make new music
+    - [ ] explore 1bitdragon https://1bitdragon.itch.io/1bitdragon
+- [ ] sfx
+    - [ ] consider redoing the sfx
+- [ ] game play
+    - [ ] add another buddy type
+- [ ] UI
+    - [ ] ensure really high scores function
+- [ ] release
+    - [ ] test controllers still work
+    - [ ] cover / assets
+    - [ ] screenshots
