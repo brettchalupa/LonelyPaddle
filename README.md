@@ -1,6 +1,6 @@
 # Lonely Paddle
 
-Tennis for those without friends.
+Tennis for those lacking friends.
 
 The game is built using [HaxeFlixel](https://haxeflixel.com).
 
@@ -20,16 +20,10 @@ haxelib run flixel-tools setup
 
 ### Testing
 
-Test the game quickly on the Neko VM with `lime test neko -debug`
-
-Update assets with `lime update neko`
-
-A note about test targets:
-
-- Neko: VM that builds pretty quickly, similar to desktop
-- HTML5: Web target that plays kinda meh but quick to build
-- Mac/Windows/Linux: Slow to build but useful for testing
+- Start the test server with: `lime test html5 -debug`
+- Update the build with: `lime build html5 -debug`
+- Update assets with `lime update neko`
 
 ### Building
 
-Build the game for playing with: `lime build TARGET -final -clean`
+Build the game for playing with: `lime build html5 -final -clean`
