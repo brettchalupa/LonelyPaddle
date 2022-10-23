@@ -58,6 +58,7 @@ class GameState extends FlxState
 	override public function create()
 	{
 		FlxG.cameras.bgColor = Color.GREEN;
+		FlxG.mouse.visible = false;
 
 		super.create();
 
@@ -85,7 +86,7 @@ class GameState extends FlxState
 		centerWall.screenCenter();
 		centerWall.x += WALL_THICKNESS;
 		walls.add(centerWall);
-		
+
 		for (wall in walls)
 		{
 			wall.solid = true;
@@ -199,6 +200,10 @@ class GameState extends FlxState
 				player.velocity.y = 0;
 			}
 
+			if (FlxG.mouse.justMoved) {
+				player.y = FlxG.mouse.y;
+			}
+
 			if (player.y < WALL_THICKNESS)
 			{
 				player.y = WALL_THICKNESS;
@@ -219,12 +224,13 @@ class GameState extends FlxState
 					ball.kill();
 				}
 			});
-			
+
 			updateScoreText();
 
 			if (balls.getFirstAlive() == null)
 			{
 				gameOver = true;
+				FlxG.mouse.visible = true;
 
 				if (score > highScore)
 				{
@@ -271,7 +277,7 @@ class GameState extends FlxState
 		}
 		else
 		{
-			if (Input.justPressed(Action.CONFIRM)) 
+			if (Input.justPressed(Action.CONFIRM))
 			{
 				starSound.play(true);
 				FlxG.resetState();
@@ -389,7 +395,7 @@ class GameState extends FlxState
 				_collidable,
 				{ "angle": 10 * angleModifier },
 				0.2,
-				{ 
+				{
 					type: FlxTweenType.PINGPONG,
 					ease: FlxEase.elasticInOut,
 					onComplete: function(tween:FlxTween) {
@@ -409,7 +415,7 @@ class GameState extends FlxState
 			object,
 			{ "scale.x": 1.2, "scale.y": 1.2 },
 			0.2,
-			{ 
+			{
 				type: FlxTweenType.PINGPONG,
 				ease: FlxEase.elasticInOut,
 				onComplete: function(tween:FlxTween) {
