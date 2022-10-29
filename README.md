@@ -4,6 +4,8 @@ Tennis for those lacking friends.
 
 A single player _Pong_ clone, mostly for learning purposes.
 
+[🕹 Play the game in your browser!](https://brettchalupa.itch.io/lonely-paddle)
+
 The game is built using [HaxeFlixel](https://haxeflixel.com).
 
 Art, music, and code by [Brett Chalupa](https://www.brettchalupa.com).
