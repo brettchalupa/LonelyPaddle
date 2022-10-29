@@ -1,10 +1,9 @@
 package;
 
 import Input;
-import Input.Action;
 import flixel.FlxG;
-import flixel.FlxState;
 import flixel.FlxSprite;
+import flixel.FlxState;
 import flixel.system.FlxSound;
 
 using flixel.util.FlxSpriteUtil;
@@ -13,7 +12,8 @@ class StartState extends FlxState
 {
 	var starSound:FlxSound;
 
-	override public function create() {
+	override public function create()
+	{
 		super.create();
 
 		var cover = new FlxSprite();
@@ -29,6 +29,9 @@ class StartState extends FlxState
 		startText.flicker(0, 0.8);
 		add(startText);
 
+		var verText = new MimeoText(Reg.version, Color.WHITE, 0.5, FlxG.width - 20, FlxG.height - 8);
+		add(verText);
+
 		starSound = FlxG.sound.load("assets/sounds/star.ogg");
 
 		FlxG.sound.playMusic("assets/music/driving.ogg", 0.9, true);
@@ -36,11 +39,12 @@ class StartState extends FlxState
 		FlxG.cameras.bgColor = Color.BLUE;
 	}
 
-	override public function update(elapsed:Float) {
-			if (Input.justPressed(Action.CONFIRM))
-			{
-				starSound.play(true);
-				FlxG.switchState(new GameState());
-			}
+	override public function update(elapsed:Float)
+	{
+		if (Input.justPressed(Action.CONFIRM))
+		{
+			starSound.play(true);
+			FlxG.switchState(new GameState());
+		}
 	}
 }
