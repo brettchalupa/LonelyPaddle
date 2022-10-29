@@ -1,3 +1,10 @@
+# License
+
+_Lonely Paddle_ has a separate license for the code and for the assets used
+within the game.
+
+## Code
+
 MIT License
 
 Copyright (c) 2022 Brett Chalupa
@@ -19,3 +26,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Assets
+
+The assets include the sprite images, music, sound effects, and font.
+
+[Lonely Paddle](https://brettchalupa.itch.io/lonely-paddle) by [Brett Chalupa](https://www.brettchalupa.com) is marked with [CC0 1.0![](https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1)![](https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1)](http://creativecommons.org/publicdomain/zero/1.0?ref=chooser-v1)
