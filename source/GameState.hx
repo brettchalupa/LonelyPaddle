@@ -157,8 +157,6 @@ class GameState extends FlxState
 		ballDeathSound = FlxG.sound.load("assets/sounds/death.ogg");
 		starSound = FlxG.sound.load("assets/sounds/star.ogg");
 		buddySound = FlxG.sound.load("assets/sounds/jump.ogg");
-
-		FlxG.sound.playMusic("assets/music/lonely-paddle.ogg", 0.5, true);
 	}
 
 	override public function update(elapsed:Float)
