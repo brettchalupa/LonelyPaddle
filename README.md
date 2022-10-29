@@ -2,7 +2,11 @@
 
 Tennis for those lacking friends.
 
+A single player _Pong_ clone, mostly for learning purposes.
+
 The game is built using [HaxeFlixel](https://haxeflixel.com).
+
+Art, music, and code by [Brett Chalupa](https://www.brettchalupa.com).
 
 ## Developing
 
@@ -22,8 +26,7 @@ haxelib run flixel-tools setup
 
 - Start the test server with: `lime test html5 -debug`
 - Update the build with: `lime build html5 -debug`
-- Update assets with `lime update neko`
 
 ### Building
 
-Build the game for playing with: `lime build html5 -final -clean`
+Build the game for distribution with: `lime build html5 -final -clean`
