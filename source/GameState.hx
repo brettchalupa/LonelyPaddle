@@ -265,7 +265,7 @@ class GameState extends FlxState
 					highScoreText.y = spacingModifier * 5;
 					add(highScoreText);
 
-					var restartText = new MimeoText("Press ACTION to restart", Color.WHITE).screenCenter();
+					var restartText = new MimeoText("CLICK to restart", Color.WHITE).screenCenter();
 					restartText.y = spacingModifier * 7;
 					restartText.flicker(0, 0.4);
 					add(restartText);

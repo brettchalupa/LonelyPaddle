@@ -23,7 +23,7 @@ class StartState extends FlxState
 		cover.y -= 15;
 		add(cover);
 
-		var startText = new MimeoText("Click to Start", Color.WHITE);
+		var startText = new MimeoText("CLICK to Start", Color.WHITE);
 		startText.screenCenter();
 		startText.y += 45;
 		startText.flicker(0, 0.8);
