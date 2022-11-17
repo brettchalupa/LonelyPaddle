@@ -34,7 +34,7 @@ class StartState extends FlxState
 
 		starSound = FlxG.sound.load("assets/sounds/star.ogg");
 
-		FlxG.sound.playMusic("assets/music/driving.ogg", 1.0, true);
+		// FlxG.sound.playMusic("assets/music/driving-og.wav", 1.0, true);
 
 		FlxG.cameras.bgColor = Color.BLUE;
 	}
