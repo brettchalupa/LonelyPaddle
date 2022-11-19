@@ -32,3 +32,12 @@ haxelib run flixel-tools setup
 ### Building
 
 Build the game for distribution with: `lime build html5 -final -clean`
+
+### Production Assets
+
+The asset source files for the game live in the `production` directory to make it easy to work with. Here's a list of the tools used:
+
+- Music: 1BitDragon 3.1
+- Aseprite for pixel art editing
+
+Audio is formatted in both .ogg and .mp3 filetypes for trying to reach the most browser compatibility.
