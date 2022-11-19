@@ -1,27 +1,28 @@
 package;
 
-import Input;
 import Input.Action;
+import Input;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup;
 import flixel.system.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxAxes;
-import flixel.util.FlxTimer;
-import flixel.effects.particles.FlxEmitter;
 import flixel.util.FlxSave;
+import flixel.util.FlxTimer;
 
-using flixel.util.FlxSpriteUtil;
 using StringTools;
+using flixel.util.FlxSpriteUtil;
 
 class GameState extends FlxState
 {
 	static inline final MAX_BALLS:Int = 100;
 	static inline final MAX_BUDDIES:Int = 20;
+
 	final STAR_DELAY:Float = 10.0;
 	final BUDDY_DELAY:Float = 2.5;
 	final WALL_THICKNESS:Int = 12;
@@ -157,6 +158,11 @@ class GameState extends FlxState
 		ballDeathSound = FlxG.sound.load("assets/sounds/death.ogg");
 		starSound = FlxG.sound.load("assets/sounds/star.ogg");
 		buddySound = FlxG.sound.load("assets/sounds/jump.ogg");
+		if (FlxG.sound.music == null)
+		{
+			FlxG.sound.playMusic(AssetPaths.lonely__ogg, 1.0, true);
+		}
+		FlxG.sound.cacheAll();
 	}
 
 	override public function update(elapsed:Float)
@@ -197,7 +203,8 @@ class GameState extends FlxState
 				player.velocity.y = 0;
 			}
 
-			if (FlxG.mouse.justMoved) {
+			if (FlxG.mouse.justMoved)
+			{
 				player.y = FlxG.mouse.y;
 			}
 
@@ -214,7 +221,8 @@ class GameState extends FlxState
 			FlxG.overlap(balls, star, ballHitStar);
 			FlxG.overlap(balls, buddies, ballHitBuddy);
 
-			balls.forEachAlive(function(ball) {
+			balls.forEachAlive(function(ball)
+			{
 				if (!ball.inWorldBounds())
 				{
 					ballDeathSound.play(true);
@@ -236,7 +244,8 @@ class GameState extends FlxState
 					save.flush();
 				}
 
-				FlxG.camera.flash(Color.WHITE, 0.75, function() {
+				FlxG.camera.flash(Color.WHITE, 0.75, function()
+				{
 					final spacingModifier = 16;
 
 					var gameOverBG = new FlxSprite();
@@ -244,7 +253,7 @@ class GameState extends FlxState
 					gameOverBG.alpha = 0.9;
 					gameOverBG.screenCenter();
 					add(gameOverBG);
-					var gameOverText = new MimeoText("Game Over", Color.WHITE, 2).screenCenter();
+					var gameOverText = new MimeoText("Game Over", Color.WHITE, 1.5).screenCenter();
 					gameOverText.y -= spacingModifier * 2;
 					add(gameOverText);
 
@@ -289,7 +298,7 @@ class GameState extends FlxState
 
 	function formattedScore(_score):String
 	{
-		 return Std.string(_score).lpad("0", 6);
+		return Std.string(_score).lpad("0", 6);
 	}
 
 	function makeBall()
@@ -310,7 +319,8 @@ class GameState extends FlxState
 		ball.revive();
 		ball.screenCenter();
 		ball.x -= WALL_THICKNESS * 2;
-		ball.flicker(1, 0.08, true, true, function(_) {
+		ball.flicker(1, 0.08, true, true, function(_)
+		{
 			ball.velocity.set(BALL_VEL, BALL_VEL);
 		});
 	}
@@ -330,7 +340,8 @@ class GameState extends FlxState
 		starEmitter.setPosition(star.x + star.origin.x, star.y + star.origin.y);
 		starEmitter.start();
 		star.kill();
-		new FlxTimer().start(1.2, function(_) {
+		new FlxTimer().start(1.2, function(_)
+		{
 			starEmitter.kill();
 		}, 1);
 		spawnBall();
@@ -345,7 +356,8 @@ class GameState extends FlxState
 		emitter.setPosition(buddy.x + buddy.origin.x, buddy.y + buddy.origin.y);
 		buddy.kill();
 		emitter.start();
-		new FlxTimer().start(1, function(_) {
+		new FlxTimer().start(1, function(_)
+		{
 			emitter.kill();
 		}, 1);
 	}
@@ -353,7 +365,8 @@ class GameState extends FlxState
 	function placeStar()
 	{
 		placeInField(star);
-		star.flicker(1, 0.04, true, true, function(_) {
+		star.flicker(1, 0.04, true, true, function(_)
+		{
 			star.revive();
 		});
 	}
@@ -362,10 +375,8 @@ class GameState extends FlxState
 
 	function placeInField(object:FlxObject)
 	{
-		object.setPosition(
-			FlxG.random.int(FIELD_POS_MOD, FlxG.width - WALL_THICKNESS - FIELD_POS_MOD),
-			FlxG.random.int(WALL_THICKNESS + FIELD_POS_MOD, FlxG.height - WALL_THICKNESS - FIELD_POS_MOD)
-		);
+		object.setPosition(FlxG.random.int(FIELD_POS_MOD, FlxG.width - WALL_THICKNESS - FIELD_POS_MOD),
+			FlxG.random.int(WALL_THICKNESS + FIELD_POS_MOD, FlxG.height - WALL_THICKNESS - FIELD_POS_MOD));
 
 		if (object.overlaps(walls))
 			placeInField(object);
@@ -388,40 +399,34 @@ class GameState extends FlxState
 			else if (_ball.y + _ball.origin.y < _collidable.y + _collidable.origin.y)
 				angleModifier = 1;
 
-			FlxTween.tween(
-				_collidable,
-				{ "angle": 10 * angleModifier },
-				0.2,
+			FlxTween.tween(_collidable, {"angle": 10 * angleModifier}, 0.2, {
+				type: FlxTweenType.PINGPONG,
+				ease: FlxEase.elasticInOut,
+				onComplete: function(tween:FlxTween)
 				{
-					type: FlxTweenType.PINGPONG,
-					ease: FlxEase.elasticInOut,
-					onComplete: function(tween:FlxTween) {
-					  if (tween.executions == 2) {
-						  tween.cancel();
-						  _collidable.angle = 0;
-					  }
-				  }
+					if (tween.executions == 2)
+					{
+						tween.cancel();
+						_collidable.angle = 0;
+					}
 				}
-			);
+			});
 		}
 	}
 
 	function scaleTween(object:FlxSprite)
 	{
-		FlxTween.tween(
-			object,
-			{ "scale.x": 1.2, "scale.y": 1.2 },
-			0.2,
+		FlxTween.tween(object, {"scale.x": 1.2, "scale.y": 1.2}, 0.2, {
+			type: FlxTweenType.PINGPONG,
+			ease: FlxEase.elasticInOut,
+			onComplete: function(tween:FlxTween)
 			{
-				type: FlxTweenType.PINGPONG,
-				ease: FlxEase.elasticInOut,
-				onComplete: function(tween:FlxTween) {
-				  if (tween.executions == 2) {
-					  tween.cancel();
-					  object.scale.set(1, 1);
-				  }
-			  }
+				if (tween.executions == 2)
+				{
+					tween.cancel();
+					object.scale.set(1, 1);
+				}
 			}
-		);
+		});
 	}
 }

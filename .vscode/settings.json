@@ -9,6 +9,5 @@
 			"source.sortImports": true
 		}
 	},
-	"haxe.enableExtendedIndentation": true,
-	"vim.autoindent": false
+	"haxe.enableExtendedIndentation": false
 }
