@@ -29,8 +29,8 @@ class StartState extends FlxState
 		startText.flicker(0, 0.8);
 		add(startText);
 
-		var verText = new MimeoText(Reg.version, Color.WHITE, 0.5, FlxG.width - 20, FlxG.height - 8);
-		add(verText);
+		add(new MimeoText(Reg.version, Color.WHITE, 0.6, FlxG.width - 20, FlxG.height - 9));
+		add(new MimeoText("Brett Chalupa", Color.WHITE, 0.6, 2, FlxG.height - 9));
 
 		starSound = FlxG.sound.load("assets/sounds/star.ogg");
 
